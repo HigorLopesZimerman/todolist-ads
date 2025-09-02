@@ -1,0 +1,32 @@
+<div class="container">
+  <header>
+    <h1>Todo List</h1>
+    <button (click)="toggleTheme()" class="theme-btn">Toggle Theme</button>
+  </header>
+
+  <section class="new-todo">
+    <input [(ngModel)]="newTodo.title" placeholder="Título" />
+    <input [(ngModel)]="newTodo.description" placeholder="Descrição (opcional)" />
+    <button (click)="add()">Adicionar</button>
+  </section>
+
+  <section class="todos">
+    <div *ngFor="let t of todos" class="todo-card" [class.completed]="t.completed">
+      <div class="left">
+        <input type="checkbox" [checked]="t.completed" (change)="toggle(t)" />
+      </div>
+      <div class="middle">
+        <h3>{{t.title}}</h3>
+        <p *ngIf="t.description">{{t.description}}</p>
+      </div>
+      <div class="right">
+        <button (click)="remove(t)">Excluir</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Desenvolvido por Higor Lopes — 
+    <a [href]="'https://github.com/'+githubUser" target="_blank">GitHub</a>
+  </footer>
+</div>
